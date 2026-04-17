@@ -1,0 +1,23 @@
+Artificial Intelligence (AI) is a branch of computer science focused on building systems that can perform tasks requiring human intelligence.
+
+Machine Learning is a subset of AI where systems learn patterns from data without being explicitly programmed.
+
+Deep Learning is a subset of Machine Learning that uses neural networks with multiple layers.
+
+Natural Language Processing (NLP) allows computers to understand, interpret, and generate human language.
+
+Computer Vision enables machines to understand images and videos.
+
+Retrieval-Augmented Generation (RAG) combines information retrieval with large language models to provide more accurate answers.
+
+Vector databases store embeddings that help search similar meanings instead of exact keywords.
+
+Pinecone is a popular managed vector database used in AI systems.
+
+Embeddings convert text into numerical vectors so machines can compare semantic similarity.
+
+Chunking is the process of splitting long documents into smaller pieces before embedding.
+
+Popular AI applications include chatbots, recommendation systems, fraud detection, healthcare diagnosis, and autonomous vehicles.
+
+Open-source frameworks for AI development include LangChain, Hugging Face Transformers, TensorFlow, and PyTorch.
