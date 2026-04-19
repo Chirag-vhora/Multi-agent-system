@@ -5,7 +5,7 @@ Machine Learning is a subset of AI where systems learn patterns from data withou
 Deep Learning is a subset of Machine Learning that uses neural networks with multiple layers.
 
 Natural Language Processing (NLP) allows computers to understand, interpret, and generate human language.
-
+    
 Computer Vision enables machines to understand images and videos.
 
 Retrieval-Augmented Generation (RAG) combines information retrieval with large language models to provide more accurate answers.
@@ -21,3 +21,44 @@ Chunking is the process of splitting long documents into smaller pieces before e
 Popular AI applications include chatbots, recommendation systems, fraud detection, healthcare diagnosis, and autonomous vehicles.
 
 Open-source frameworks for AI development include LangChain, Hugging Face Transformers, TensorFlow, and PyTorch.
+
+Main and important thing is mahammad chirag is learning those all concept which are in this file ex.deep learning and embeddings .
+
+Artificial Intelligence (AI) is the simulation of human intelligence in machines.
+
+There are three main types of AI:
+1. Narrow AI
+2. General AI
+3. Super AI
+
+Narrow AI:
+Narrow AI is designed for a specific task. Examples include ChatGPT, Google Maps, and recommendation systems.
+
+General AI:
+General AI refers to machines that can perform any intellectual task that a human can do. This type of AI does not exist yet.
+
+Super AI:
+Super AI is a hypothetical AI that surpasses human intelligence in every aspect.
+
+Machine Learning:
+Machine Learning is a subset of AI that allows systems to learn from data.
+
+Deep Learning:
+Deep Learning is a subset of Machine Learning that uses neural networks.
+
+RAG:
+RAG stands for Retrieval Augmented Generation.
+RAG combines retrieval and generation.
+
+Vector Database:
+A Vector Database stores embeddings and helps retrieve relevant information.
+
+Pinecone:
+Pinecone is a vector database used in AI applications.
+
+LangChain:
+LangChain is a framework used to build AI applications.
+
+Important Note:
+Chirag is building an AI Agent using LangChain, Pinecone, and Gemini.
+This project is focused on building a production level AI agent.

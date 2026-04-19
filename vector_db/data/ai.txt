@@ -1,38 +1,12 @@
-Artificial Intelligence (AI) is the simulation of human intelligence in machines.
+BIG TOPIC divide into 4 chapters
 
-There are three main types of AI:
-1. Narrow AI
-2. General AI
-3. Super AI
+1) deep learning
 
-Narrow AI:
-Narrow AI is designed for a specific task. Examples include ChatGPT, Google Maps, and recommendation systems.
+2) machine learning
 
-General AI:
-General AI refers to machines that can perform any intellectual task that a human can do. This type of AI does not exist yet.
+3) GEN AI BASIC concept
 
-Super AI:
-Super AI is a hypothetical AI that surpasses human intelligence in every aspect.
+4) understanding about memory parts 
 
-Machine Learning:
-Machine Learning is a subset of AI that allows systems to learn from data.
+mahammad chirag is learning all of these four chapter learning one by one and currently he is at the chapter - 2.
 
-Deep Learning:
-Deep Learning is a subset of Machine Learning that uses neural networks.
-
-RAG:
-RAG stands for Retrieval Augmented Generation.
-RAG combines retrieval and generation.
-
-Vector Database:
-A Vector Database stores embeddings and helps retrieve relevant information.
-
-Pinecone:
-Pinecone is a vector database used in AI applications.
-
-LangChain:
-LangChain is a framework used to build AI applications.
-
-Important Note:
-Chirag is building an AI Agent using LangChain, Pinecone, and Gemini.
-This project is focused on building a production level AI agent.

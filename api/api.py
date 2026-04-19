@@ -4,7 +4,7 @@ from fastapi import FastAPI ,UploadFile, File
 
 import os
 
-from agent.upload_rag import upload_to_vector_db
+from agent.rag import upload_to_vector_db
 
 from agent.agent import run_agent 
 

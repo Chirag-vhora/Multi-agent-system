@@ -1,5 +1,5 @@
 import os
-from langchain_community.document_loaders import TextLoader
+from langchain_community.document_loaders import TextLoader, PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_pinecone import PineconeVectorStore
 from pinecone import Pinecone, ServerlessSpec
@@ -16,16 +16,7 @@ def get_embeddings():
         )
     return embeddings
 
-def get_vector_db():
-    loader = TextLoader("vector_db/data/ai.txt")
-    documents = loader.load()
-
-    splitter = RecursiveCharacterTextSplitter(
-        chunk_size=500,
-        chunk_overlap=100
-    )
-    docs = splitter.split_documents(documents)
-
+def get_pinecone_store(namespace="uploaded-docs"):
     pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
     index_name = "ai-agent"
 
@@ -37,14 +28,42 @@ def get_vector_db():
             spec=ServerlessSpec(cloud="aws", region="us-east-1")
         )
 
-    return PineconeVectorStore.from_documents(
-        docs,
+    return PineconeVectorStore(
+        index_name=index_name,
         embedding=get_embeddings(),
-        index_name=index_name
+        namespace=namespace
     )
+
+def upload_to_vector_db(file_path: str):
+    ext = file_path.split(".")[-1].lower()
+
+    if ext == "txt":
+        loader = TextLoader(file_path)
+    elif ext == "pdf":
+        loader = PyPDFLoader(file_path)
+    else:
+        return "Unsupported file"
+
+    docs = loader.load()
+
+    splitter = RecursiveCharacterTextSplitter(
+        chunk_size=500,
+        chunk_overlap=100
+    )
+
+    chunks = splitter.split_documents(docs)
+
+    store = get_pinecone_store("uploaded-docs")
+    store.add_documents(chunks)
+
+    global vector_db
+    vector_db = store
+
+    return "Upload Success"
 
 def get_retriever():
     global vector_db
     if vector_db is None:
-        vector_db = get_vector_db()
+        vector_db = get_pinecone_store("uploaded-docs")
+
     return vector_db.as_retriever()
