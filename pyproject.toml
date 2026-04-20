@@ -13,6 +13,7 @@ dependencies = [
     "langchain-core>=1.2.27",
     "langchain-google-genai>=4.2.1",
     "langchain-huggingface>=1.2.1",
+    "langchain-mistralai>=1.1.2",
     "langchain-pinecone>=0.2.13",
     "langchain-text-splitters>=1.1.1",
     "openai>=2.30.0",

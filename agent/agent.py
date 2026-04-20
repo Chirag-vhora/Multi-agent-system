@@ -5,14 +5,39 @@ from langchain.agents import create_agent
 from agent.tools import tools
 from agent.llm import llm
 
-
 from agent.router import route_query
-# from agent.llm import llm
 
 summary = ""
 messages = []
 
 
+# ---------------- CLEAN OUTPUT ----------------
+def clean_output(content):
+
+    # If normal string response
+    if isinstance(content, str):
+        return content
+
+    # If model returns list format
+    if isinstance(content, list):
+
+        texts = []
+
+        for item in content:
+
+            if isinstance(item, dict) and "text" in item:
+                texts.append(item["text"])
+
+            else:
+                texts.append(str(item))
+
+        return " ".join(texts)
+
+    # Fallback
+    return str(content)
+
+
+# ---------------- MEMORY SUMMARY ----------------
 def summarize_memory(summary, messages):
 
     prompt = f"""
@@ -25,72 +50,40 @@ Conversation:
 Update short memory summary.
 """
 
-    return llm.invoke(prompt).content
+    result = llm.invoke(prompt)
+
+    return clean_output(result.content)
 
 
+# ---------------- MAIN AGENT ----------------
 def run_agent(user):
 
     global summary, messages
 
-    messages.append({"role": "user", "content": user})
+    # Store user message
+    messages.append({
+        "role": "user",
+        "content": user
+    })
 
+    # Route query to correct agent
     agent_name, response = route_query(user)
 
+    # Clean model response
+    response = clean_output(response)
+
+    # Final formatted response
     final_text = f"[{agent_name}]\n\n{response}"
 
-    messages.append({"role": "assistant", "content": final_text})
+    # Store assistant response
+    messages.append({
+        "role": "assistant",
+        "content": final_text
+    })
 
+    # Summarize memory after long chat
     if len(messages) > 10:
         summary = summarize_memory(summary, messages[:-5])
         messages[:] = messages[-5:]
 
     return final_text
-
-
-
-
-    # print("Gemini Chat Ready (type exit to quit)\n")
-
-    # while True:
-    #     user = input("YOU: ").strip()
-
-    #     if user.lower() == "exit":
-    #         print("Goodbye ! 👋")
-    #         break
-        
-    #     # Add user message
-    #     messages.append({
-    #         "role": "user",
-    #         "content": user
-    #     })
-        
-    #     response = agent.invoke(
-    #         {
-    #             "messages": (
-    #                 [{"role": "system", "content": summary}] if summary else []
-    #             ) + messages
-    #         }
-    #     )
-    #     # print(f"answer -- > {response}")
-    #     ai_message = response["messages"][-1]
-
-    #     if isinstance(ai_message.content, list):
-    #         # print("AI:", ai_message.content[0]["text"])
-    #         ai_text = ai_message.content[0]["text"]
-    #     else:
-    #         # print("AI:", ai_message.content)
-    #         ai_text = ai_message.content
-            
-    #     # Add AI response to memory
-    #     messages.append({
-    #         "role": "assistant",
-    #         "content": ai_text
-    #     })
-        
-    #     # Summarize memory
-    #     if len(messages) > 10:
-    #         summary = summarize_memory(summary, messages[:-5])
-    #         messages = messages[-5:]
-
-    #     print("AI:" , ai_text)
-    #     print()

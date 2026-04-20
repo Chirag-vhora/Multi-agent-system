@@ -1583,6 +1583,22 @@ wheels = [
 ]
 
 [[package]]
+name = "langchain-mistralai"
+version = "1.1.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "httpx" },
+    { name = "httpx-sse" },
+    { name = "langchain-core" },
+    { name = "pydantic" },
+    { name = "tokenizers" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/ab/b1/712930c5bce9ffc9475e89872f42c6ed5f9567b59052f6fe0ad202c4416f/langchain_mistralai-1.1.2.tar.gz", hash = "sha256:3c852b1b2d8a729299f25fba7d5c9cadb9e2128387c2771745e8e8cb412b33cd", size = 119418, upload-time = "2026-03-13T14:12:57.856Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/1f/da/de08a5442d88e23bdf3b44716be9c38e958dd888ada159de0789c91fd6c7/langchain_mistralai-1.1.2-py3-none-any.whl", hash = "sha256:2c55a7d1df6a090b61d3c3ca0a7894895c87557b8248e6fb1608d61ad9f149ee", size = 20357, upload-time = "2026-03-13T14:12:56.375Z" },
+]
+
+[[package]]
 name = "langchain-openai"
 version = "1.1.12"
 source = { registry = "https://pypi.org/simple" }
@@ -4075,6 +4091,7 @@ dependencies = [
     { name = "langchain-core" },
     { name = "langchain-google-genai" },
     { name = "langchain-huggingface" },
+    { name = "langchain-mistralai" },
     { name = "langchain-pinecone" },
     { name = "langchain-text-splitters" },
     { name = "openai" },
@@ -4098,6 +4115,7 @@ requires-dist = [
     { name = "langchain-core", specifier = ">=1.2.27" },
     { name = "langchain-google-genai", specifier = ">=4.2.1" },
     { name = "langchain-huggingface", specifier = ">=1.2.1" },
+    { name = "langchain-mistralai", specifier = ">=1.1.2" },
     { name = "langchain-pinecone", specifier = ">=0.2.13" },
     { name = "langchain-text-splitters", specifier = ">=1.1.1" },
     { name = "openai", specifier = ">=2.30.0" },
